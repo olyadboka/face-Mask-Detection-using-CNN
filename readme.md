@@ -19,6 +19,12 @@ The model is a custom convolutional neural network (CNN) with the following arch
 - **Fully Connected 1**: 8192→512 units with Dropout (0.5)
 - **Fully Connected 2**: 512→2 units (with_mask, without_mask)
 
+
+https://github.com/user-attachments/assets/317d611d-bf39-4a6a-b3d0-f405acc5a3b2
+
+
+- 
+
 ## Performance
 
 - **Test Accuracy**: 98.35%
