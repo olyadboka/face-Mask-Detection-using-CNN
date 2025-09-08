@@ -47,3 +47,9 @@ cd face-mask-detection
 ```bash
 pip install -r requirements.txt
 ```
+3. to Execute
+
+   ```bash
+   python test.py --camera
+   or
+   python test.py --image image1.jpeg 
