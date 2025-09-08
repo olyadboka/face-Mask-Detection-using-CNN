@@ -30,6 +30,8 @@ https://github.com/user-attachments/assets/317d611d-bf39-4a6a-b3d0-f405acc5a3b2
 - **Test Accuracy**: 98.35%
 - **Training Time**: ~25 epochs
 - **Input Size**: 128×128 RGB images
+  <img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/c5123fdf-4512-400d-b9fe-5f8e8e5925ae" />
+
 
 ## Installation
 
