@@ -19,11 +19,19 @@ The model is a custom convolutional neural network (CNN) with the following arch
 - **Fully Connected 1**: 8192→512 units with Dropout (0.5)
 - **Fully Connected 2**: 512→2 units (with_mask, without_mask)
 
+
+https://github.com/user-attachments/assets/317d611d-bf39-4a6a-b3d0-f405acc5a3b2
+
+
+- 
+
 ## Performance
 
 - **Test Accuracy**: 98.35%
 - **Training Time**: ~25 epochs
 - **Input Size**: 128×128 RGB images
+  <img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/c5123fdf-4512-400d-b9fe-5f8e8e5925ae" />
+
 
 ## Installation
 
@@ -39,3 +47,9 @@ cd face-mask-detection
 ```bash
 pip install -r requirements.txt
 ```
+3. to Execute
+
+   ```bash
+   python test.py --camera
+   or
+   python test.py --image image1.jpeg 
