@@ -1,6 +1,16 @@
 # Face Mask Detection Model
 
-A deep learning model for detecting whether a person is wearing a face mask or not, built with PyTorch.
+A deep learning model for detecting whether a person is wearing a face mask or not, built with PyTorch. The system can:
+
+Classify single images
+
+Process batches of images from a directory
+
+Perform real-time face mask detection using webcam
+
+Detect multiple faces in an image and classify each one
+
+The model achieves high accuracy in distinguishing between "with_mask" and "without_mask" classes.
 
 ## Model Architecture
 
