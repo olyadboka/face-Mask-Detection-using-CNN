@@ -212,7 +212,7 @@ def predict_batch(model, image_dir, transform, class_names):
 
     return results
 
-d
+
 def display_results(results, max_images=9):
     """Display prediction results in a grid"""
     if not results:
