@@ -14,8 +14,6 @@ import cv2
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Using device: {device}")
 
-# Define the model architecture (same as training)
-
 
 class ConvBlock(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size=3, stride=1, padding=1):
@@ -62,10 +60,7 @@ class FaceMaskCNN(nn.Module):
             ConvBlock(128, 256)
         )
 
-        # Calculate the size of the feature maps
         self._initialize_weights()
-
-        # Dummy input to calculate feature size
         with torch.no_grad():
             dummy_input = torch.zeros(1, 3, 128, 128)
             dummy_output = self.features(dummy_input)
@@ -93,19 +88,15 @@ class FaceMaskCNN(nn.Module):
         x = self.classifier(x)
         return x
 
-# Load the trained model
-
 
 def load_model(model_path, class_names_path):
     """Load the trained model and class names"""
-    # Load class names
+
     with open(class_names_path, 'r') as f:
         class_names = json.load(f)
 
-    # Load model
     model = FaceMaskCNN(num_classes=len(class_names)).to(device)
 
-    # Load state dict
     if os.path.exists(model_path):
         checkpoint = torch.load(model_path, map_location=device)
         if 'model_state_dict' in checkpoint:
@@ -118,8 +109,6 @@ def load_model(model_path, class_names_path):
     else:
         raise FileNotFoundError(f"Model file {model_path} not found")
 
-# Define transformations (same as training)
-
 
 def get_transforms():
     return transforms.Compose([
@@ -128,8 +117,6 @@ def get_transforms():
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225])
     ])
-
-# Function to detect faces and predict masks using OpenCV
 
 
 def detect_faces_and_predict_mask(model, image_path, transform, scale_factor=1.1, min_neighbors=5):
@@ -142,27 +129,21 @@ def detect_faces_and_predict_mask(model, image_path, transform, scale_factor=1.1
         print(f"Error: Could not load image from {image_path}")
         return None, []
 
-    # Convert to RGB (OpenCV uses BGR by default)
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-    # Load Haar cascade for face detection
     face_cascade = cv2.CascadeClassifier(
         cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-    # Detect faces
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scale_factor, min_neighbors)
 
-    # Process each face
     results = []
     for (x, y, w, h) in faces:
-        # Extract face region
+
         face_region = image_rgb[y:y+h, x:x+w]
 
-        # Convert to PIL Image for transformation
         face_pil = Image.fromarray(face_region)
 
-        # Apply transformations and predict
         face_tensor = transform(face_pil).unsqueeze(0).to(device)
 
         with torch.no_grad():
@@ -170,18 +151,14 @@ def detect_faces_and_predict_mask(model, image_path, transform, scale_factor=1.1
             probs = F.softmax(outputs, dim=1)
             _, predicted = torch.max(outputs, 1)
 
-        # Get prediction details
         class_names = ['with_mask', 'without_mask']
         predicted_class = class_names[predicted.item()]
         confidence = probs[0][predicted.item()].item()
 
-        # Determine color based on prediction (green for mask, red for no mask)
         color = (0, 255, 0) if predicted_class == 'with_mask' else (255, 0, 0)
 
-        # Draw rectangle around face
         cv2.rectangle(image, (x, y), (x+w, y+h), color, 2)
 
-        # Add label
         label = f"{predicted_class}: {confidence:.2f}"
         cv2.putText(image, label, (x, y-10),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
