@@ -167,6 +167,7 @@ export default function App() {
       {tab === "upload" ? <UploadTab /> : <CameraTab />}
       <footer>
         <p>Model served by ONNX Runtime on Node.js</p>
+        <p>Copyright &copy; 2025 reserved to Olyad Boka</p>
       </footer>
     </div>
   );
