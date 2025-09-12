@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const apiBase = import.meta.env.VITE_API_BASE || ""; // e.g., https://your-domain.com
+const apiBase =
+  import.meta.env.VITE_API_BASE ||
+  "https://face-mask-detection-using-cnn.onrender.com";
 
 export const api = axios.create({
   baseURL: apiBase,
@@ -12,13 +14,9 @@ export async function predictImage(fileOrBlob) {
   const form = new FormData();
   form.append("image", fileOrBlob);
   try {
-    const res = await api.post(
-      "https://face-mask-detection-using-cnn.onrender.com/api/predict",
-      form,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
+    const res = await api.post("/api/predict", form, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
     return res.data;
   } catch (err) {
     if (err.response) {
