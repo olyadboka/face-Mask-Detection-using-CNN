@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 24">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#60a5fa" offset="0"/>
+      <stop stop-color="#22d3ee" offset="1"/>
+    </linearGradient>
+  </defs>
+  <text x="0" y="18" font-family="Segoe UI, Roboto, Arial" font-size="16" fill="url(#g2)">Face Mask Detection</text>
+</svg>

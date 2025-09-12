@@ -1,0 +1,21 @@
+{
+  "name": "face-mask-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "form-data": "^4.0.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.10",
+    "onnxruntime-node": "^1.18.0",
+    "sharp": "^0.33.4"
+  }
+}
