@@ -12,9 +12,13 @@ export async function predictImage(fileOrBlob) {
   const form = new FormData();
   form.append("image", fileOrBlob);
   try {
-    const res = await api.post("/api/predict", form, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const res = await api.post(
+      "https://face-mask-detection-using-cnn.onrender.com/api/predict",
+      form,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
     return res.data;
   } catch (err) {
     if (err.response) {
