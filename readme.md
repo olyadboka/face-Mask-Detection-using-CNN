@@ -1,5 +1,7 @@
 # Face Mask Detection Model
 
+demo: https://face-mask-detection-using-cnn-1.onrender.com
+
 A deep learning model for detecting whether a person is wearing a face mask or not, built with PyTorch. The system can:
 
 Classify single images
