@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import { predictImage } from "./api";
+import bg from "./assets/background.jpg";
 
 function UploadTab() {
   const [image, setImage] = useState(null);
@@ -148,6 +149,13 @@ export default function App() {
   return (
     <div className="container">
       <header>
+        <img
+          src={bg}
+          width={100}
+          height={100}
+          style={{ borderRadius: "50%" }}
+          alt=""
+        />
         <h1>Face Mask Detection</h1>
         <nav>
           <button

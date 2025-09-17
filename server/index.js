@@ -44,7 +44,6 @@ async function loadModel() {
 }
 
 function normalizeImageTensor(floatArray) {
-  // Normalize using ImageNet mean/std to match test.py
   const mean = [0.485, 0.456, 0.406];
   const std = [0.229, 0.224, 0.225];
   for (let c = 0; c < 3; c++) {
