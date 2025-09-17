@@ -32,7 +32,11 @@ The model is a custom convolutional neural network (CNN) with the following arch
 - **Fully Connected 2**: 512→2 units (with_mask, without_mask)
 
 
-https://github.com/user-attachments/assets/317d611d-bf39-4a6a-b3d0-f405acc5a3b2
+
+
+
+
+https://github.com/user-attachments/assets/1a07c198-1d3c-4ba3-8a43-82a4ce3c5262
 
 
 - 
